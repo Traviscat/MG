@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -178,34 +178,53 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Info 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0J-0K-mgC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0J-0K-mgC">
                                             <rect key="frame" x="220" y="27" width="208" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-bE-nKk">
-                                            <rect key="frame" x="87" y="4" width="125" height="67"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-bE-nKk">
+                                            <rect key="frame" x="87" y="0.0" width="125" height="71"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="125" id="BJH-tq-xpW"/>
+                                                <constraint firstAttribute="height" constant="71" id="evj-NP-Xqi"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-li-nEb" customClass="listCheckBox">
+                                            <rect key="frame" x="8" y="18" width="36" height="35"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UV9-L9-Ybk" customClass="listStar">
+                                            <rect key="frame" x="43" y="18" width="36" height="35"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="wQG-li-nEb" firstAttribute="leading" secondItem="9S8-au-002" secondAttribute="leadingMargin" id="08M-fQ-Rfa"/>
                                         <constraint firstItem="X0J-0K-mgC" firstAttribute="top" secondItem="9S8-au-002" secondAttribute="topMargin" constant="19" id="0Zt-i9-r8X"/>
                                         <constraint firstItem="X0J-0K-mgC" firstAttribute="leading" secondItem="6rv-bE-nKk" secondAttribute="trailing" constant="8" id="3tz-A0-fK1"/>
                                         <constraint firstItem="zVe-rS-SMb" firstAttribute="top" secondItem="Jx0-aY-AfJ" secondAttribute="bottom" constant="16" id="7nP-bQ-f8K"/>
+                                        <constraint firstItem="wQG-li-nEb" firstAttribute="top" secondItem="9S8-au-002" secondAttribute="topMargin" constant="10" id="97n-KA-gfw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UV9-L9-Ybk" secondAttribute="bottom" constant="13.5" id="9Qc-Th-WRT"/>
+                                        <constraint firstItem="UV9-L9-Ybk" firstAttribute="top" secondItem="9S8-au-002" secondAttribute="topMargin" constant="10" id="E1c-Zo-6RJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="X0J-0K-mgC" secondAttribute="bottom" constant="18.5" id="ERJ-0T-Ut8"/>
+                                        <constraint firstItem="6rv-bE-nKk" firstAttribute="leading" secondItem="UV9-L9-Ybk" secondAttribute="trailing" constant="8" id="Ycv-w2-Cxb"/>
                                         <constraint firstItem="zVe-rS-SMb" firstAttribute="top" secondItem="Jx0-aY-AfJ" secondAttribute="bottom" constant="16" id="aMb-QH-fOx"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6rv-bE-nKk" secondAttribute="bottom" constant="-4.5" id="bOV-ie-FLY"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="zVe-rS-SMb" secondAttribute="bottom" constant="0.5" id="cx4-8e-lLo"/>
                                         <constraint firstItem="Jx0-aY-AfJ" firstAttribute="top" secondItem="9S8-au-002" secondAttribute="topMargin" id="psz-xC-TXr"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="wQG-li-nEb" secondAttribute="bottom" constant="13.5" id="pxL-CX-FTe"/>
                                         <constraint firstItem="6rv-bE-nKk" firstAttribute="leading" secondItem="9S8-au-002" secondAttribute="leadingMargin" constant="79" id="uLB-NX-wl0"/>
+                                        <constraint firstItem="UV9-L9-Ybk" firstAttribute="leading" secondItem="9S8-au-002" secondAttribute="leadingMargin" constant="35" id="w6x-0H-LjJ"/>
                                         <constraint firstItem="6rv-bE-nKk" firstAttribute="top" secondItem="9S8-au-002" secondAttribute="topMargin" constant="-4" id="zh6-Xz-aXA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkBox" destination="wQG-li-nEb" id="muh-1a-tvY"/>
                                     <outlet property="image1" destination="6rv-bE-nKk" id="4FD-Zx-gaO"/>
                                     <outlet property="itemInfo1" destination="X0J-0K-mgC" id="Ayc-jp-XDH"/>
                                     <outlet property="itemInfo2" destination="zVe-rS-SMb" id="oL2-2y-SL0"/>
                                     <outlet property="itemTitle" destination="Jx0-aY-AfJ" id="zpy-5N-cY2"/>
+                                    <outlet property="star" destination="UV9-L9-Ybk" id="y5Q-C2-Vr3"/>
                                     <segue destination="efd-CN-0l5" kind="showDetail" id="jJU-SR-SRa">
                                         <segue key="commit" inheritsFrom="parent" id="Jhs-1F-fL7"/>
                                         <segue key="preview" inheritsFrom="commit" id="Knf-qc-n9k"/>

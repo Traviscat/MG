@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UUID</key>
+	<string></string>
+	<key>Revision</key>
+	<integer>1</integer>
+	<key>Item Name</key>
+	<string></string>
+	<key>Item Company</key>
+	<string></string>
+	<key>Item Brand</key>
+	<string></string>
+	<key>Item Release Date</key>
+	<date>2016-07-06T22:28:16Z</date>
+	<key>Item Avaliable</key>
+	<true/>
+	<key>Item not avaliable reason</key>
+	<string></string>
+	<key>Item MSRP</key>
+	<integer>0</integer>
+	<key>Assembly Diffculty</key>
+	<string></string>
+	<key>Item Rarity</key>
+	<string></string>
+</dict>
+</plist>

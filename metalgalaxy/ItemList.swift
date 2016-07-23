@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemList: UITableViewController,UISplitViewControllerDelegate  {
-
+    
     private var collapseDetailViewController = true
     
     override func viewDidLoad() {
@@ -17,6 +17,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
         splitViewController?.delegate = self
         
         super.viewDidLoad()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,17 +47,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        var sections = 1
-        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-            
-            let testMode = delegate.useOnlyTestData
-            if testMode {
-                sections = 1
-            }
-            else {
-                //TODO: App Data Model
-            }
-        }
+        let sections = 1
         return sections
     }
 
@@ -69,14 +60,21 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
             if testMode {
                 rows = 5
                 }
-                
+/*
+            else {
+
+            let possibleRows = itemsArray.itemsAvaliable()
+            if possibleRows == nil {
+            print("ERROR: No Data")
+            rows = 0
             }
             else {
-                //TODO: App Data Model
-            }
-        return rows
+                rows = possibleRows!
+                }
+            }*/
+        }
+     return rows
     }
-    
 
     
     
@@ -102,7 +100,21 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                     }
                 }
             else {
-                //TODO: App Data Model
+            
+            
+/*            let itemObject = NSDictionary(dictionary: itemsArray.itemsDict[indexPath.row]!)
+            cell.itemTitle.text = itemObject["Item Name"] as? String
+            cell.itemInfo1.text = itemObject["Item Company"] as? String
+            if itemObject["Item Sub Brand"] as? String == "Nan" {
+                cell.itemInfo2.text = nil
+            }
+            else {
+                cell.itemInfo2.text = itemObject["Item Sub Brand"] as? String
+            }
+            //TEMP: Display the blank star for now, will add code for filled star later
+            let starImage = UIImage(named: "listStarBlank")
+            cell.image1.image = starImage
+ */
             }
         return cell
     }

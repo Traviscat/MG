@@ -12,11 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let useOnlyTestData = true
+    let useOnlyTestData = false
+//    let amazonAdReg = AmazonAdRegistration.sharedRegistration()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
         // Override point for customization after application launch.
+//        amazonAdReg.setAppKey("25dfe936e6ae49209036d534f167e09b")
         return true
     }
 

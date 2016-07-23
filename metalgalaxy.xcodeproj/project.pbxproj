@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5912EF2A1D43C81300F31FB4 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912EF291D43C81300F31FB4 /* SQLite.framework */; };
+		5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912EF461D43CD9400F31FB4 /* ItemsDb.swift */; };
+		5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A11D2078D7005E9797 /* AdSupport.framework */; };
+		5976A9A41D2078FE005E9797 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */; };
+		5976A9A61D207908005E9797 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A51D207908005E9797 /* CoreLocation.framework */; };
+		5976A9A81D207911005E9797 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A71D207911005E9797 /* CoreTelephony.framework */; };
+		5976A9AA1D20791D005E9797 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A91D20791D005E9797 /* MediaPlayer.framework */; };
+		5976A9AC1D207924005E9797 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9AB1D207924005E9797 /* EventKit.framework */; };
+		5976A9AE1D20792A005E9797 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9AD1D20792A005E9797 /* EventKitUI.framework */; };
+		5976A9B01D207935005E9797 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9AF1D207935005E9797 /* QuartzCore.framework */; };
+		5976A9B71D2080F6005E9797 /* AmazonAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9B61D2080F6005E9797 /* AmazonAd.framework */; };
+		59B48DE71D2DBD08000EBE2B /* ItemDetailTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */; };
 		59E2AD7C1D1721BE003197B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */; };
 		59E2AD831D1721BE003197B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E2AD811D1721BE003197B5 /* Main.storyboard */; };
 		59E2AD851D1721BE003197B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E2AD841D1721BE003197B5 /* Assets.xcassets */; };
@@ -18,9 +30,78 @@
 		59E2AD9B1D172800003197B5 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2AD9A1D172800003197B5 /* Progress.swift */; };
 		59E2AD9D1D172831003197B5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2AD9C1D172831003197B5 /* Settings.swift */; };
 		59E2AD9F1D1738A8003197B5 /* itemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2AD9E1D1738A8003197B5 /* itemListCell.swift */; };
+		59E583171D300F2800783801 /* star1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E583151D300F2800783801 /* star1.png */; };
+		59E583181D300F2800783801 /* star2.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E583161D300F2800783801 /* star2.png */; };
+		59E5831C1D300F9D00783801 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E5831B1D300F9D00783801 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5912EF341D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
+		5912EF361D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
+			remoteInfo = "SQLiteTests iOS";
+		};
+		5912EF381D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
+			remoteInfo = "SQLite Mac";
+		};
+		5912EF3A1D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
+			remoteInfo = "SQLiteTests Mac";
+		};
+		5912EF3C1D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
+			remoteInfo = "SQLite tvOS";
+		};
+		5912EF3E1D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
+			remoteInfo = "SQLiteTests tvOS";
+		};
+		5912EF401D43C93F00F31FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A121AC451CA35C79005A31D1;
+			remoteInfo = "SQLite watchOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = metalgalaxy/SQLite.xcodeproj; sourceTree = "<group>"; };
+		5912EF291D43C81300F31FB4 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/metalgalaxy-fjgutnazsvzzigdysrkeuoevxcri/Build/Products/Debug-iphonesimulator/SQLite.framework"; sourceTree = "<group>"; };
+		5912EF461D43CD9400F31FB4 /* ItemsDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsDb.swift; path = ../ItemsDb.swift; sourceTree = "<group>"; };
+		5976A9A11D2078D7005E9797 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5976A9A51D207908005E9797 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5976A9A71D207911005E9797 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5976A9A91D20791D005E9797 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		5976A9AB1D207924005E9797 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		5976A9AD1D20792A005E9797 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		5976A9AF1D207935005E9797 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5976A9B31D207AF8005E9797 /* metalgalaxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "metalgalaxy-Bridging-Header.h"; sourceTree = "<group>"; };
+		5976A9B61D2080F6005E9797 /* AmazonAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonAd.framework; path = metalgalaxy/AmazonMobileAds/AmazonAd.framework; sourceTree = "<group>"; };
+		59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemDetailTemplate.plist; sourceTree = "<group>"; };
 		59E2AD781D1721BE003197B5 /* metalgalaxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metalgalaxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59E2AD821D1721BE003197B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +116,9 @@
 		59E2AD9A1D172800003197B5 /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		59E2AD9C1D172831003197B5 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		59E2AD9E1D1738A8003197B5 /* itemListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemListCell.swift; sourceTree = "<group>"; };
+		59E583151D300F2800783801 /* star1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star1.png; sourceTree = SOURCE_ROOT; };
+		59E583161D300F2800783801 /* star2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star2.png; sourceTree = SOURCE_ROOT; };
+		59E5831B1D300F9D00783801 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,17 +126,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5976A9B71D2080F6005E9797 /* AmazonAd.framework in Frameworks */,
+				5976A9B01D207935005E9797 /* QuartzCore.framework in Frameworks */,
+				5976A9AE1D20792A005E9797 /* EventKitUI.framework in Frameworks */,
+				5976A9AC1D207924005E9797 /* EventKit.framework in Frameworks */,
+				5976A9AA1D20791D005E9797 /* MediaPlayer.framework in Frameworks */,
+				5976A9A81D207911005E9797 /* CoreTelephony.framework in Frameworks */,
+				5976A9A61D207908005E9797 /* CoreLocation.framework in Frameworks */,
+				5976A9A41D2078FE005E9797 /* SystemConfiguration.framework in Frameworks */,
+				5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */,
 				59E2AD911D1721ED003197B5 /* CloudKit.framework in Frameworks */,
 				59E2AD931D1721FE003197B5 /* StoreKit.framework in Frameworks */,
+				5912EF2A1D43C81300F31FB4 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5912EF2B1D43C93F00F31FB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5912EF351D43C93F00F31FB4 /* SQLite.framework */,
+				5912EF371D43C93F00F31FB4 /* SQLiteTests iOS.xctest */,
+				5912EF391D43C93F00F31FB4 /* SQLite.framework */,
+				5912EF3B1D43C93F00F31FB4 /* SQLiteTests Mac.xctest */,
+				5912EF3D1D43C93F00F31FB4 /* SQLite.framework */,
+				5912EF3F1D43C93F00F31FB4 /* SQLiteTests tvOS.xctest */,
+				5912EF411D43C93F00F31FB4 /* SQLite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		59E2AD6F1D1721BE003197B5 = {
 			isa = PBXGroup;
 			children = (
+				5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */,
+				5912EF291D43C81300F31FB4 /* SQLite.framework */,
+				5976A9B61D2080F6005E9797 /* AmazonAd.framework */,
+				5976A9AF1D207935005E9797 /* QuartzCore.framework */,
+				5976A9AD1D20792A005E9797 /* EventKitUI.framework */,
+				5976A9AB1D207924005E9797 /* EventKit.framework */,
+				5976A9A91D20791D005E9797 /* MediaPlayer.framework */,
+				5976A9A71D207911005E9797 /* CoreTelephony.framework */,
+				5976A9A51D207908005E9797 /* CoreLocation.framework */,
+				5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */,
+				5976A9A11D2078D7005E9797 /* AdSupport.framework */,
 				59E2AD921D1721FE003197B5 /* StoreKit.framework */,
 				59E2AD901D1721ED003197B5 /* CloudKit.framework */,
 				59E2AD7A1D1721BE003197B5 /* metalgalaxy */,
@@ -71,6 +190,7 @@
 		59E2AD7A1D1721BE003197B5 /* metalgalaxy */ = {
 			isa = PBXGroup;
 			children = (
+				5912EF461D43CD9400F31FB4 /* ItemsDb.swift */,
 				59E2AD8F1D1721E6003197B5 /* metalgalaxy.entitlements */,
 				59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */,
 				59E2AD811D1721BE003197B5 /* Main.storyboard */,
@@ -78,10 +198,15 @@
 				59E2AD861D1721BE003197B5 /* LaunchScreen.storyboard */,
 				59E2AD891D1721BE003197B5 /* Info.plist */,
 				59E2AD961D1724DC003197B5 /* ItemList.swift */,
+				59E583151D300F2800783801 /* star1.png */,
+				59E583161D300F2800783801 /* star2.png */,
+				59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */,
 				59E2AD981D172606003197B5 /* ItemDetail.swift */,
 				59E2AD9A1D172800003197B5 /* Progress.swift */,
 				59E2AD9C1D172831003197B5 /* Settings.swift */,
 				59E2AD9E1D1738A8003197B5 /* itemListCell.swift */,
+				5976A9B31D207AF8005E9797 /* metalgalaxy-Bridging-Header.h */,
+				59E5831B1D300F9D00783801 /* Media.xcassets */,
 			);
 			path = metalgalaxy;
 			sourceTree = "<group>";
@@ -147,6 +272,12 @@
 			mainGroup = 59E2AD6F1D1721BE003197B5;
 			productRefGroup = 59E2AD791D1721BE003197B5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5912EF2B1D43C93F00F31FB4 /* Products */;
+					ProjectRef = 5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				59E2AD771D1721BE003197B5 /* metalgalaxy */,
@@ -154,13 +285,69 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		5912EF351D43C93F00F31FB4 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 5912EF341D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF371D43C93F00F31FB4 /* SQLiteTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests iOS.xctest";
+			remoteRef = 5912EF361D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF391D43C93F00F31FB4 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 5912EF381D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF3B1D43C93F00F31FB4 /* SQLiteTests Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests Mac.xctest";
+			remoteRef = 5912EF3A1D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF3D1D43C93F00F31FB4 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 5912EF3C1D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF3F1D43C93F00F31FB4 /* SQLiteTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests tvOS.xctest";
+			remoteRef = 5912EF3E1D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5912EF411D43C93F00F31FB4 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 5912EF401D43C93F00F31FB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		59E2AD761D1721BE003197B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				59E2AD881D1721BE003197B5 /* LaunchScreen.storyboard in Resources */,
+				59E583171D300F2800783801 /* star1.png in Resources */,
+				59E5831C1D300F9D00783801 /* Media.xcassets in Resources */,
+				59B48DE71D2DBD08000EBE2B /* ItemDetailTemplate.plist in Resources */,
 				59E2AD851D1721BE003197B5 /* Assets.xcassets in Resources */,
+				59E583181D300F2800783801 /* star2.png in Resources */,
 				59E2AD831D1721BE003197B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59E2AD9F1D1738A8003197B5 /* itemListCell.swift in Sources */,
+				5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */,
 				59E2AD971D1724DC003197B5 /* ItemList.swift in Sources */,
 				59E2AD991D172606003197B5 /* ItemDetail.swift in Sources */,
 				59E2AD9B1D172800003197B5 /* Progress.swift in Sources */,
@@ -292,14 +480,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",
+				);
 				INFOPLIST_FILE = metalgalaxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronerdman.metalgalaxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "metalgalaxy/metalgalaxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -307,14 +502,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",
+				);
 				INFOPLIST_FILE = metalgalaxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronerdman.metalgalaxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "metalgalaxy/metalgalaxy-Bridging-Header.h";
 			};
 			name = Release;
 		};
