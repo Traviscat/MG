@@ -20,13 +20,13 @@ let itemreleasemonth = Expression<String> ("itemreleasemonth")
 let itemreleaseyear = Expression<String> ("itemreleaseyear")
 let itemavaliable = Expression<Bool> ("itemavaliable")
 let itemavaliablereason = Expression<String?> ("itemavaliablereason")
-let itemnumberofsheets = Expression<Int64> ("itemnumberofsheets")
-let itemdiffculty = Expression<Int64> ("itemdiffculty")
+let itemnumberofsheets = Expression<Int> ("itemnumberofsheets")
+let itemdiffculty = Expression<String> ("itemdiffculty")
 let iteminfoURL = Expression<String?> ("IteminfoURL")
 let item360URL = Expression<String?> ("Item360URL")
 let defaults = NSUserDefaults.standardUserDefaults()
 
-class ItemsDb {
+public class ItemsDb {
     func startDb() {
         try! db.run(items.create(ifNotExists: true) {t in
             t.column(uuid, primaryKey: true)
@@ -52,33 +52,35 @@ class ItemsDb {
             }
             var i = 0
             var currentItemUUID : String!
-            var itemPlistPath : String!
             var itemPlist : NSDictionary!
             while i < initalItems!.count {
                 currentItemUUID = initalItems![i] as! String
-                    if itemPlistPath == NSBundle.mainBundle().pathForResource("(/currentItemUUID)", ofType: "plist") {
-                        itemPlist = NSDictionary(contentsOfFile: itemPlistPath)
-                        let currentItemName: String = itemPlist.valueForKey("Item Name") as! String
-                        let currentItemCompany: String = itemPlist.valueForKey("Item Company") as! String
-                        let currentItemBrand: String = itemPlist.valueForKey("Item Brand") as! String
-                        let itemDate : NSDate = itemPlist.valueForKey("Item Release Date") as! NSDate
+                let itemPlistPath = NSBundle.mainBundle().pathForResource("\(currentItemUUID)", ofType: "plist")
+                if (itemPlistPath == nil) {
+                    print("ERROR: plist for UUID \(currentItemUUID) is missing, will not add")
+                    i += 1
+                }
+                else {
+                        itemPlist = NSDictionary(contentsOfFile: itemPlistPath!)
+                        let currentItemName: String = itemPlist["Item Name"] as! String
+                    let currentItemCompany: String = itemPlist["Item Company"] as! String
+                        let currentItemBrand: String = itemPlist["Item Brand"] as! String
+                        let itemDate : NSDate = itemPlist["Item Release Date"] as! NSDate
                         let monthFormat = NSDateFormatter()
                         monthFormat.setLocalizedDateFormatFromTemplate("MM")
                         let itemMonth = monthFormat.stringFromDate(itemDate)
                         let yearFormat =  NSDateFormatter()
                         yearFormat.setLocalizedDateFormatFromTemplate("YYYY")
                         let itemYear = yearFormat.stringFromDate(itemDate)
-                        let currentItemAvaliable: Bool = itemPlist.valueForKey("Item Avaliable") as! Bool
-                        let currentItemReason: String? = itemPlist.valueForKey("Item not avaliable reason") as! String?
-                        let currentItemNumberOfSheets: Int64 = itemPlist.valueForKey("Number of Sheets") as! Int64
-                        let currentItemDiffculty: Int64 = itemPlist.valueForKey("Assembly Diffculty") as! Int64
-                        let currentItemURL: String = itemPlist.valueForKey("Instructions") as! String
-                        let currentItem360: String? = itemPlist.valueForKey("Three Sixty Rotation") as! String?
+                        let currentItemAvaliable: Bool = itemPlist["Item Avaliable"] as! Bool
+                        let currentItemReason: String? = itemPlist["Item not avaliable reason"] as! String?
+                        let currentItemNumberOfSheets: Int = itemPlist["Number Of Sheets"] as! Int
+                        let currentItemDiffculty: String = itemPlist["Assembly Diffculty"] as! String
+                        let currentItemURL: String = itemPlist["Instructions"] as! String
+                        let currentItem360: String? = itemPlist["Three Sixty Rotation"] as! String?
                 try! db.run(items.insert(uuid <- currentItemUUID, itemname <- currentItemName, itemmaker <- currentItemCompany, itembrand <- currentItemBrand, itemreleasemonth <- itemMonth, itemreleaseyear <- itemYear, itemavaliable <- currentItemAvaliable, itemavaliablereason <- currentItemReason, itemnumberofsheets <- currentItemNumberOfSheets, itemdiffculty <- currentItemDiffculty, iteminfoURL <- currentItemURL, item360URL <- currentItem360))
                 i += 1
-                } else if (itemPlistPath == nil) {
-                    print("ERROR: plist for UUID (/currentItemUUID) is missing, will not add")
-                    i += 1
+                }
                 }
             }
             defaults.setBool(true, forKey: "dbPrep")
@@ -86,9 +88,21 @@ class ItemsDb {
             let itemBaseRevisionNumberPlist = NSArray(contentsOfFile: itemBaseRevisionNumberPath!)
             defaults.setInteger(itemBaseRevisionNumberPlist![0] as! Int, forKey: "ItemDBUpdateRevision")
         }
-            
+    
+    func itemsAvaliable() -> Int {
+        let itemCount = try! db.scalar(items.count) 
+        return itemCount
     }
-            
+    func getItem(currentRow:Int) -> Dictionary<String, String> {
+        var queryResult = [String:String]()
+        let updCurrentRow = currentRow + 1
+        let query = items.select(uuid, itemname, itemmaker, itembrand)
+                               .order(itemname.asc)
+                               .limit(1, offset: updCurrentRow)
+        for row in try! db.prepare(query) {
+            queryResult = ["UUID":row[uuid], "Item Name":row[itemname], "Item Maker":row[itemmaker], "Item Brand":row[itembrand]]
+        }
+        return queryResult
+    }
 }
-        
 

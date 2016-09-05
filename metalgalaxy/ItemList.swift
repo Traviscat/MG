@@ -11,6 +11,8 @@ import UIKit
 class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     
     private var collapseDetailViewController = true
+    var theItemDb = ItemsDb()
+    var uuidList : Array<String> = []
     
     override func viewDidLoad() {
         
@@ -60,19 +62,19 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
             if testMode {
                 rows = 5
                 }
-/*
+            
             else {
-
-            let possibleRows = itemsArray.itemsAvaliable()
-            if possibleRows == nil {
-            print("ERROR: No Data")
-            rows = 0
-            }
-            else {
-                rows = possibleRows!
+                theItemDb.startDb()
+                let possibleRows = theItemDb.itemsAvaliable()
+                if possibleRows == 0 {
+                    print("ERROR: No Data")
+                    rows = 0
                 }
-            }*/
-        }
+                else {
+                    rows = possibleRows
+                }
+            }
+                }
      return rows
     }
 
@@ -98,8 +100,13 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                         print("ERROR: Setup bad!")
                         }
                     }
-                }
             else {
+            let rowData = theItemDb.getItem(indexPath.row)
+            uuidList.append(rowData["UUID"]!)
+            cell.itemTitle.text = rowData["Item Name"]!
+            cell.itemInfo1.text = rowData["Item Maker"]!
+            cell.itemInfo2.text = rowData["Item Brand"]!
+            //TODO: Add item Image and the Star/Check code
             
             
 /*            let itemObject = NSDictionary(dictionary: itemsArray.itemsDict[indexPath.row]!)
@@ -116,6 +123,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
             cell.image1.image = starImage
  */
             }
+        }
         return cell
     }
     
