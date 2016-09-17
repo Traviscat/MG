@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     
@@ -101,13 +102,40 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                         }
                     }
             else {
-            let rowData = theItemDb.getItem(indexPath.row)
-            uuidList.append(rowData["UUID"]!)
-            cell.itemTitle.text = rowData["Item Name"]!
-            cell.itemInfo1.text = rowData["Item Maker"]!
-            cell.itemInfo2.text = rowData["Item Brand"]!
-            //TODO: Add item Image and the Star/Check code
-            
+                    let rowData = theItemDb.getItem(indexPath.row)
+//                    print(indexPath.row)
+                    let currentUUID = rowData["UUID"]!
+                    uuidList.append(currentUUID)
+                    cell.itemTitle.text = rowData["Item Name"]!
+                    cell.itemInfo1.text = rowData["Item Maker"]!
+                    cell.itemInfo2.text = rowData["Item Brand"]!
+                    
+/*                  //INPROGRESS: Code for Image and Color coding, likely will do as a background process after initial table cell loads.
+                    let container = CKContainer.defaultContainer()
+                    let privateDatabase = container.privateCloudDatabase
+                    let predicate = NSPredicate(format: "uuid = %@", currentUUID)
+                    let query = CKQuery(recordType: "userItemRecord", predicate: predicate)
+                    privateDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+                        if error != nil {
+                        println(error)
+                        //TODO: Find out what error message is sent when we get a no record found and create the record here
+                     } else {
+                        println(results)
+                        let currentUserItemRecord: CKRecord = results
+                        let currentItemHas: String = currentItemUserRecord(valueForKey: "userItemHas") as! String
+                        if currentItemHas.text == "Yes" {
+                            cell.backgroundcolor = UIColor.greenColor()
+                        }
+                        else {
+                            let currentItemWant: String = currentItemUserRecord(valueForKey: "userItemWant") as! String
+                            if currentItemWant.text == "Yes" {
+                                cell.backgroundcolor = UIColor.yellowColor()
+                        }
+                     }
+                }
+                    
+*/
+ 
             
 /*            let itemObject = NSDictionary(dictionary: itemsArray.itemsDict[indexPath.row]!)
             cell.itemTitle.text = itemObject["Item Name"] as? String
@@ -163,14 +191,21 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
+        if segue.identifier = "loadDetail" {
+            let itemDetailController:ItemDetail = segue.destinationViewController as! ItemDetail
+            let selectedIndex = self.tableView.indexPathForCell(sender as ItemListCell)
+            itemDetailController.itemUUID = uuidList[selectedIndex]
+        }
+        
         // Pass the selected object to the new view controller.
+        
     }
-    */
+    
 
 }

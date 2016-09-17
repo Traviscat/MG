@@ -104,5 +104,14 @@ public class ItemsDb {
         }
         return queryResult
     }
+    func getItemDetail(selectedUuid:String) -> Dictionary<String, AnyObject?> {
+        var queryResult = [String:AnyObject?]()
+        let query = items.select(uuid, itemname, itemmaker, itembrand, itemreleasemonth, itemreleaseyear, itemavaliable, itemavaliablereason, itemnumberofsheets, itemdiffculty, iteminfoURL, item360URL)
+                         .filter(uuid == selectedUuid)
+        for row in try! db.prepare(query) {
+            queryResult = ["UUID":row[uuid] as! String, "Item Name":row[itemname] as! String, "Item Brand":row[itembrand] as! String, "Item Release Month":row[itemreleasemonth] as! String, "Item Release Year":row[itemreleaseyear] as! String, "Item Avaliable":row[itemavaliable] as! Bool, "Item Avaliable Reason":row[itemavaliablereason] as? String, "Item Number of Sheets":row[itemnumberofsheets] as! Int, "Item Diffculty":row[itemdiffculty] as! String, "Item Info URL":row[iteminfoURL] as? String, "Item 360 URL":row[item360URL] as? String]
+        }
+    return queryResult
+    }
 }
 

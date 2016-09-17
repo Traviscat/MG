@@ -14,8 +14,6 @@ class ItemListCell: UITableViewCell {
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var itemInfo1: UILabel!
     @IBOutlet weak var itemInfo2: UILabel!
-    @IBOutlet weak var checkBox: UIImageView!
-    @IBOutlet weak var star: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

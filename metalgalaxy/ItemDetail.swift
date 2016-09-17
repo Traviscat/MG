@@ -9,6 +9,7 @@
 import UIKit
 
 class ItemDetail: UITableViewController {
+    let itemUUID:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
