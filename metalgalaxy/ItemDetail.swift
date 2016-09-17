@@ -9,7 +9,8 @@
 import UIKit
 
 class ItemDetail: UITableViewController {
-    let itemUUID:String = ""
+    let selectedItemUUID:String = ""
+    let selecteditemName:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,11 @@ class ItemDetail: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.title = selecteditemName
+        super.viewWillAppear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

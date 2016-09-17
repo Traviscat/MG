@@ -43,7 +43,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        theItemDb = nil
     }
 
     // MARK: - Table view data source
@@ -102,6 +102,9 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                         }
                     }
             else {
+                    if theItemdb == nil {
+                        theItemDb = ItemsDb.startDb()
+                    }
                     let rowData = theItemDb.getItem(indexPath.row)
 //                    print(indexPath.row)
                     let currentUUID = rowData["UUID"]!
@@ -194,13 +197,19 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
 
     // MARK: - Navigation
 
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.title = "Metal Galaxy"
+        super.viewWillAppear(animated)
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier = "loadDetail" {
+            navigationItem.title = nil
             let itemDetailController:ItemDetail = segue.destinationViewController as! ItemDetail
             let selectedIndex = self.tableView.indexPathForCell(sender as ItemListCell)
-            itemDetailController.itemUUID = uuidList[selectedIndex]
+            itemDetailController.selectedItemUUID = uuidList[selectedIndex]
         }
         
         // Pass the selected object to the new view controller.
