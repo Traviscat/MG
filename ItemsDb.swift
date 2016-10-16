@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-let dbPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 let db = try! Connection("\(dbPath)/itemsdb.sqlite3")
 let items = Table("items")
 let uuid = Expression<String> ("uuid")
@@ -29,9 +29,9 @@ let itemdiffculty = Expression<String> ("itemdiffculty")
 let itemwebpageURL = Expression<String> ("itemwebpageURL")
 let iteminfoURL = Expression<String?> ("IteminfoURL")
 let item360URL = Expression<String?> ("Item360URL")
-let defaults = NSUserDefaults.standardUserDefaults()
+let defaults = UserDefaults.standard
 
-public class ItemsDb {
+open class ItemsDb {
     func startDb() {
         try! db.run(items.create(ifNotExists: true) {t in
             t.column(uuid, primaryKey: true)
@@ -52,9 +52,9 @@ public class ItemsDb {
             t.column(iteminfoURL)
             t.column(item360URL)
             })
-        if !defaults.boolForKey("dbPrep") {
+        if !defaults.bool(forKey: "dbPrep") {
             var initalItems: NSArray?
-            if let path = NSBundle.mainBundle().pathForResource("initialItems", ofType: "plist") {
+            if let path = Bundle.main.path(forResource: "initialItems", ofType: "plist") {
                 initalItems = NSArray(contentsOfFile: path)
             } else {
                 print("ERROR: The intital items plist is missing")
@@ -65,7 +65,7 @@ public class ItemsDb {
             var itemPlist : NSDictionary!
             while i < initalItems!.count {
                 currentItemUUID = initalItems![i] as! String
-                let itemPlistPath = NSBundle.mainBundle().pathForResource("\(currentItemUUID)", ofType: "plist")
+                let itemPlistPath = Bundle.main.path(forResource: "\(currentItemUUID)", ofType: "plist")
                 if (itemPlistPath == nil) {
                     print("ERROR: plist for UUID \(currentItemUUID) is missing, will not add")
                     i += 1
@@ -76,23 +76,23 @@ public class ItemsDb {
                     let currentItemCompany: String = itemPlist["Item Company"] as! String
                         let currentItemBrand: String = itemPlist["Item Brand"] as! String
                     let currentItemCollection: String = itemPlist["Collection"] as! String
-                        let itemDate : NSDate = itemPlist["Item Release Date"] as! NSDate
-                        let monthFormat = NSDateFormatter()
+                        let itemDate : Date = itemPlist["Item Release Date"] as! Date
+                        let monthFormat = DateFormatter()
                         monthFormat.setLocalizedDateFormatFromTemplate("MM")
-                        let itemMonth = monthFormat.stringFromDate(itemDate)
-                        let yearFormat =  NSDateFormatter()
+                        let itemMonth = monthFormat.string(from: itemDate)
+                        let yearFormat =  DateFormatter()
                         yearFormat.setLocalizedDateFormatFromTemplate("YYYY")
-                        let itemYear = yearFormat.stringFromDate(itemDate)
-                        let dayFormat = NSDateFormatter()
+                        let itemYear = yearFormat.string(from: itemDate)
+                        let dayFormat = DateFormatter()
                         dayFormat.setLocalizedDateFormatFromTemplate("dd")
-                        let itemDay = dayFormat.stringFromDate(itemDate)
+                        let itemDay = dayFormat.string(from: itemDate)
                         let currentItemAvaliable: Bool = itemPlist["Item Avaliable"] as! Bool
                         let currentItemReason: String? = itemPlist["Item not avaliable reason"] as! String?
                         let currentItemExclusivity: Bool = itemPlist["Item Exclusive"] as! Bool
                         let currentItemExclusiveLocation: String? = itemPlist["Item Exclusive To Where?"] as! String?
                         let currentItemNumberOfSheets: Int = itemPlist["Number Of Sheets"] as! Int
                         let currentItemDiffculty: String = itemPlist["Assembly Diffculty"] as! String
-                        let currentItemWebURL : String = itemPlist["Models Website"]
+                        let currentItemWebURL : String = itemPlist["Models Website"] as! String
                         let currentItemInstructionsURL: String = itemPlist["Instructions"] as! String
                         let currentItem360: String? = itemPlist["Three Sixty Rotation"] as! String?
                 try! db.run(items.insert(uuid <- currentItemUUID, itemname <- currentItemName, itemmaker <- currentItemCompany, itembrand <- currentItemBrand,  itemcollection <- currentItemCollection, itemreleasemonth <- itemMonth, itemreleaseyear <- itemYear, itemreleaseday <- itemDay, itemavaliable <- currentItemAvaliable, itemavaliablereason <- currentItemReason, itemexclusivity <- currentItemExclusivity, itemexclusivelocation <- currentItemExclusiveLocation, itemnumberofsheets <- currentItemNumberOfSheets, itemdiffculty <- currentItemDiffculty, itemwebpageURL <- currentItemWebURL, iteminfoURL <- currentItemInstructionsURL, item360URL <- currentItem360))
@@ -100,17 +100,17 @@ public class ItemsDb {
                 }
                 }
             }
-            defaults.setBool(true, forKey: "dbPrep")
-            let itemBaseRevisionNumberPath = NSBundle.mainBundle().pathForResource("Item Base Revision", ofType: "plist")
+            defaults.set(true, forKey: "dbPrep")
+            let itemBaseRevisionNumberPath = Bundle.main.path(forResource: "Item Base Revision", ofType: "plist")
             let itemBaseRevisionNumberPlist = NSArray(contentsOfFile: itemBaseRevisionNumberPath!)
-            defaults.setInteger(itemBaseRevisionNumberPlist![0] as! Int, forKey: "ItemDBUpdateRevision")
+            defaults.set(itemBaseRevisionNumberPlist![0] as! Int, forKey: "ItemDBUpdateRevision")
         }
     
     func itemsAvaliable() -> Int {
         let itemCount = try! db.scalar(items.count) 
         return itemCount
     }
-    func getItem(currentRow:Int) -> Dictionary<String, String> {
+    func getItem(_ currentRow:Int) -> Dictionary<String, String> {
         var queryResult = [String:String]()
         let updCurrentRow = currentRow + 1
         let query = items.select(uuid, itemname, itemmaker, itembrand)
@@ -121,12 +121,12 @@ public class ItemsDb {
         }
         return queryResult
     }
-    func getItemDetail(selectedUuid:String) -> Dictionary<String, AnyObject?> {
+    func getItemDetail(_ selectedUuid:String) -> Dictionary<String, AnyObject?> {
         var queryResult = [String:AnyObject?]()
         let query = items.select(uuid, itemname, itemmaker, itembrand, itemreleasemonth, itemreleaseyear, itemreleaseday, itemavaliable, itemavaliablereason, itemexclusivity, itemexclusivelocation, itemnumberofsheets, itemdiffculty, itemwebpageURL, iteminfoURL, item360URL)
                          .filter(uuid == selectedUuid)
         for row in try! db.prepare(query) {
-            queryResult = ["UUID":row[uuid] as! String, "Item Name":row[itemname] as! String, "Item Brand":row[itembrand] as! String, "Item Release Month":row[itemreleasemonth] as! String, "Item Release Year":row[itemreleaseyear] as! String, "Item Release Day":row[itemreleaseday] as! String, "Item Avaliable":row[itemavaliable] as! Bool, "Item Avaliable Reason":row[itemavaliablereason] as! String?, "Item Exclusivity":row[itemexclusivity] as! Bool, "Item Exclsuive Location":row[itemexclusivelocation] as! String?, "Item Number of Sheets":row[itemnumberofsheets] as! Int, "Item Diffculty":row[itemdiffculty] as! String, "Item Webpage URL":row[itemwebpageURL] as! String, "Item Instructions URL":row[iteminfoURL] as! String?, "Item 360 URL":row[item360URL] as! String?]
+            queryResult = ["UUID":row[uuid]  as Optional<AnyObject>, "Item Name":row[itemname]  as Optional<AnyObject>, "Item Brand":row[itembrand]  as Optional<AnyObject>, "Item Release Month":row[itemreleasemonth]  as Optional<AnyObject>, "Item Release Year":row[itemreleaseyear]  as Optional<AnyObject>, "Item Release Day":row[itemreleaseday]  as Optional<AnyObject>, "Item Avaliable":row[itemavaliable]  as Optional<AnyObject>, "Item Avaliable Reason":row[itemavaliablereason] as Optional<AnyObject>, "Item Exclusivity":row[itemexclusivity] as Optional<AnyObject>, "Item Exclsuive Location":row[itemexclusivelocation] as Optional<AnyObject>, "Item Number of Sheets":row[itemnumberofsheets] as Optional<AnyObject>, "Item Diffculty":row[itemdiffculty] as Optional<AnyObject>, "Item Webpage URL":row[itemwebpageURL] as Optional<AnyObject>, "Item Instructions URL":row[iteminfoURL] as Optional<AnyObject>, "Item 360 URL":row[item360URL] as Optional<AnyObject>]
         }
     return queryResult
     }

@@ -11,8 +11,8 @@ import CloudKit
 
 class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     
-    private var collapseDetailViewController = true
-    var theItemDb = ItemsDb()
+    fileprivate var collapseDetailViewController = true
+    public var theItemDb = ItemsDb()
     var uuidList : Array<String> = []
     
     override func viewDidLoad() {
@@ -30,34 +30,34 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     }
     // MARK: - UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         collapseDetailViewController = false
     }
     
     // MARK: - UISplitViewControllerDelegate
     
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return collapseDetailViewController
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        theItemDb = nil
+        //theItemDb = nil
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         let sections = 1
         return sections
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         var rows = 1
-        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
             
             let testMode = delegate.useOnlyTestData
             if testMode {
@@ -81,12 +81,12 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
 
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("listItem", forIndexPath: indexPath) as! ItemListCell
-        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listItem", for: indexPath) as! ItemListCell
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let testMode = delegate.useOnlyTestData
                 if testMode {
-                    switch indexPath.row {
+                    switch (indexPath as NSIndexPath).row {
                     case 0:
                         cell.itemTitle.text = NSLocalizedString("Some Item 1", comment: "")
                     case 1:
@@ -102,10 +102,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                         }
                     }
             else {
-                    if theItemdb == nil {
-                        theItemDb = ItemsDb.startDb()
-                    }
-                    let rowData = theItemDb.getItem(indexPath.row)
+                    let rowData = theItemDb.getItem((indexPath as NSIndexPath).row)
 //                    print(indexPath.row)
                     let currentUUID = rowData["UUID"]!
                     uuidList.append(currentUUID)
@@ -197,18 +194,18 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
 
     // MARK: - Navigation
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "Metal Galaxy"
         super.viewWillAppear(animated)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier = "loadDetail" {
+        if segue.identifier == "loadDetail" {
             navigationItem.title = nil
-            let itemDetailController:ItemDetail = segue.destinationViewController as! ItemDetail
-            let selectedIndex = self.tableView.indexPathForCell(sender as ItemListCell)
+            let itemDetailController:ItemDetail = segue.destination as! ItemDetail
+            let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
             itemDetailController.selectedItemUUID = uuidList[selectedIndex]
         }
         
