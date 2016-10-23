@@ -12,9 +12,9 @@ import SafariServices
 class ItemDetail: UITableViewController {
     var selectedItemUUID:String = ""
     let selectedItemName:String = ""
-    var selectedInfoURL:URL = URL()
-    var selectedInstructionsURL = URL()
-    var selected360URL = URL()
+    var selectedInfoURL:URL? = nil
+    var selectedInstructionsURL:URL? = nil
+    var selected360URL:URL? = nil
     var itemDetailsTable:Dictionary <String, AnyObject?> = [:]
     @IBOutlet weak var theCompanyCell: UITableViewCell!
     @IBOutlet weak var theBrandCell: UITableViewCell!
@@ -29,10 +29,8 @@ class ItemDetail: UITableViewController {
     @IBOutlet weak var the360Cell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //if ItemList.theItemsDb == nil {
-        //    ItemList.theItemsDb.startDb()
-        //}
-        itemDetailsTable = ItemList.theItemsDb.getItemDetail(selectedUuid:selectedItemUUID)
+        ItemList().theItemDb.startDb()
+        itemDetailsTable = ItemList().theItemDb.getItemDetail(selectedItemUUID)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -184,13 +182,13 @@ class ItemDetail: UITableViewController {
         if (indexPath as NSIndexPath).section == 1 {
             switch (indexPath as NSIndexPath).row {
             case 0:
-                let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInfoURL)
+                let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInfoURL!)
                 self.show(safariViewController, sender: nil)
             case 1:
-                let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInstructionsURL)
+                let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInstructionsURL!)
                 self.show(safariViewController, sender: nil)
             case 2:
-                let safariViewController : SFSafariViewController = SFSafariViewController(url: selected360URL)
+                let safariViewController : SFSafariViewController = SFSafariViewController(url: selected360URL!)
                 self.show(safariViewController, sender: nil)
             default:
                 break

@@ -13,7 +13,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     
     fileprivate var collapseDetailViewController = true
     public var theItemDb = ItemsDb()
-    var uuidList : Array<String> = []
+//    var uuidList : Array<String> = []
     
     override func viewDidLoad() {
         
@@ -104,8 +104,6 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
             else {
                     let rowData = theItemDb.getItem((indexPath as NSIndexPath).row)
 //                    print(indexPath.row)
-                    let currentUUID = rowData["UUID"]!
-                    uuidList.append(currentUUID)
                     cell.itemTitle.text = rowData["Item Name"]!
                     cell.itemInfo1.text = rowData["Item Maker"]!
                     cell.itemInfo2.text = rowData["Item Brand"]!
@@ -206,7 +204,8 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
             navigationItem.title = nil
             let itemDetailController:ItemDetail = segue.destination as! ItemDetail
             let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
-            itemDetailController.selectedItemUUID = uuidList[selectedIndex]
+            let theUUID = theItemDb.getItemUUID((selectedIndex?.row)!)
+            itemDetailController.selectedItemUUID = theUUID["UUID"]!
         }
         
         // Pass the selected object to the new view controller.

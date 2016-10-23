@@ -113,13 +113,23 @@ open class ItemsDb {
     func getItem(_ currentRow:Int) -> Dictionary<String, String> {
         var queryResult = [String:String]()
         let updCurrentRow = currentRow + 1
-        let query = items.select(uuid, itemname, itemmaker, itembrand)
+        let query = items.select(itemname, itemmaker, itembrand)
                                .order(itemname.asc)
                                .limit(1, offset: updCurrentRow)
         for row in try! db.prepare(query) {
-            queryResult = ["UUID":row[uuid], "Item Name":row[itemname], "Item Maker":row[itemmaker], "Item Brand":row[itembrand]]
+            queryResult = ["Item Name":row[itemname], "Item Maker":row[itemmaker], "Item Brand":row[itembrand]]
         }
         return queryResult
+    }
+    func getItemUUID(_ selectedRow:Int) -> Dictionary<String, String> {
+        var uuidQueryResult = [String:String]()
+        let updCurrentRow = selectedRow + 1
+        let query = items.select(uuid)
+                         .limit(1, offset: updCurrentRow)
+        for row in try! db.prepare(query) {
+            uuidQueryResult = ["UUID":row[uuid]]
+        }
+        return uuidQueryResult
     }
     func getItemDetail(_ selectedUuid:String) -> Dictionary<String, AnyObject?> {
         var queryResult = [String:AnyObject?]()
