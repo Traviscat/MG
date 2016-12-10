@@ -61,7 +61,7 @@ open class ItemsDb {
                 return
             }
             var i = 0
-            var currentItemUUID : String!
+            var currentItemUUID : String
             var itemPlist : NSDictionary!
             while i < initalItems!.count {
                 currentItemUUID = initalItems![i] as! String

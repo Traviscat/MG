@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UUID</key>
+	<string>MMS298</string>
+	<key>Revision</key>
+	<integer>1</integer>
+	<key>Item Name</key>
+	<string>Halo 5 Guardian</string>
+	<key>Item Company</key>
+	<string>Fascinations</string>
+	<key>Item Brand</key>
+	<string>Metal Earth</string>
+	<key>Item Release Date</key>
+	<date>2016-07-06T22:28:16Z</date>
+	<key>Item Avaliable</key>
+	<true/>
+	<key>Item Not Avaliable Reason</key>
+	<string></string>
+	<key>Assembly Diffculty</key>
+	<string>Very Difficult</string>
+	<key>Models Website</key>
+	<string>http://halo.fascinations.com</string>
+	<key>Item Exclusive</key>
+	<true/>
+	<key>Item Exclusive To Where?</key>
+	<string>Halo 5 Legendary Edition</string>
+	<key>Three Sixty Rotation</key>
+	<string>https://www.fascinations.com/me/360/mms298/</string>
+	<key>Number Of Sheets</key>
+	<integer>2</integer>
+	<key>Collection</key>
+	<string>Halo</string>
+	<key>Instructions</key>
+	<string></string>
+</dict>
+</plist>

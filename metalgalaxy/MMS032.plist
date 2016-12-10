@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UUID</key>
+	<string>MMS032</string>
+	<key>Revision</key>
+	<integer>1</integer>
+	<key>Item Name</key>
+	<string>White House</string>
+	<key>Item Company</key>
+	<string>Fascinations</string>
+	<key>Item Brand</key>
+	<string>Metal Earth</string>
+	<key>Item Release Date</key>
+	<date>2016-07-06T22:28:16Z</date>
+	<key>Item Avaliable</key>
+	<true/>
+	<key>Item Not Avaliable Reason</key>
+	<string></string>
+	<key>Assembly Diffculty</key>
+	<string>Easy</string>
+	<key>Models Website</key>
+	<string>http://www.fascinations.com/metalearth/united-states-architecture/white-house</string>
+	<key>Item Exclusive</key>
+	<false/>
+	<key>Item Exclusive To Where?</key>
+	<string></string>
+	<key>Three Sixty Rotation</key>
+	<string>http://www.fascinations.com/me/360/mms032/index.html</string>
+	<key>Number Of Sheets</key>
+	<integer>2</integer>
+	<key>Instructions</key>
+	<string>http://www.fascinations.com/me/360/mms032/mms032.pdf</string>
+</dict>
+</plist>
