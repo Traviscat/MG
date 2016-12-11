@@ -30,6 +30,8 @@
 	<string>http://www.tenyo.co.jp/mnp/030/</string>
 	<key>Number Of Sheets</key>
 	<integer>1</integer>
+	<key>Collection</key>
+	<string></string>
 	<key>Instructions</key>
 	<string>http://www.tenyo.co.jp/mnp/030/instruction.pdf</string>
 </dict>

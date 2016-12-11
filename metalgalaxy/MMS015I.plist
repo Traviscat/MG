@@ -30,6 +30,8 @@
 	<string></string>
 	<key>Number Of Sheets</key>
 	<integer>1</integer>
+	<key>Collection</key>
+	<string></string>
 	<key>Instructions</key>
 	<string>http://www.fascinations.com/me/360/mms015e/mms015e.pdf</string>
 </dict>

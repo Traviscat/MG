@@ -30,6 +30,8 @@
 	<string>http://www.fascinations.com/me/360/mms023/index.html</string>
 	<key>Number Of Sheets</key>
 	<integer>2</integer>
+	<key>Collection</key>
+	<string></string>
 	<key>Instructions</key>
 	<string>http://www.fascinations.com/me/360/mms023/mms023.pdf</string>
 </dict>

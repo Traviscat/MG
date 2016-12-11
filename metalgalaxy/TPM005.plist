@@ -30,6 +30,8 @@
 	<string>http://www.tenyo.co.jp/tmp/005/</string>
 	<key>Number Of Sheets</key>
 	<integer>2</integer>
+	<key>Collection</key>
+	<string></string>
 	<key>Instructions</key>
 	<string>http://www.tenyo.co.jp/tmp/005/instruction.pdf</string>
 </dict>
