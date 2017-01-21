@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5912EF2A1D43C81300F31FB4 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912EF291D43C81300F31FB4 /* SQLite.framework */; };
 		5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912EF461D43CD9400F31FB4 /* ItemsDb.swift */; };
+		593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */; };
 		5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A11D2078D7005E9797 /* AdSupport.framework */; };
 		5976A9A41D2078FE005E9797 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */; };
 		5976A9A61D207908005E9797 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A51D207908005E9797 /* CoreLocation.framework */; };
@@ -20,7 +21,6 @@
 		5976A9B71D2080F6005E9797 /* AmazonAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9B61D2080F6005E9797 /* AmazonAd.framework */; };
 		5992988B1D4D6FE5001946BF /* initialItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5992988A1D4D6FE5001946BF /* initialItems.plist */; };
 		599298941D4D840D001946BF /* Item Base Revision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 599298931D4D840D001946BF /* Item Base Revision.plist */; };
-		59B48DE71D2DBD08000EBE2B /* ItemDetailTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */; };
 		59D3ED4C1DFCC205003A90DA /* TPM005.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3EC841DFCC204003A90DA /* TPM005.plist */; };
 		59D3ED4D1DFCC205003A90DA /* TMPG005.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3EC851DFCC204003A90DA /* TMPG005.plist */; };
 		59D3ED4E1DFCC205003A90DA /* TMPG004.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3EC861DFCC204003A90DA /* TMPG004.plist */; };
@@ -293,6 +293,7 @@
 		5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = metalgalaxy/SQLite.xcodeproj; sourceTree = "<group>"; };
 		5912EF291D43C81300F31FB4 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/metalgalaxy-fjgutnazsvzzigdysrkeuoevxcri/Build/Products/Debug-iphonesimulator/SQLite.framework"; sourceTree = "<group>"; };
 		5912EF461D43CD9400F31FB4 /* ItemsDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsDb.swift; path = ../ItemsDb.swift; sourceTree = "<group>"; };
+		593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemDetailsGenericCell.swift; sourceTree = "<group>"; };
 		5976A9A11D2078D7005E9797 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5976A9A51D207908005E9797 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -305,7 +306,6 @@
 		5976A9B61D2080F6005E9797 /* AmazonAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonAd.framework; path = metalgalaxy/AmazonMobileAds/AmazonAd.framework; sourceTree = "<group>"; };
 		5992988A1D4D6FE5001946BF /* initialItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialItems.plist; sourceTree = "<group>"; };
 		599298931D4D840D001946BF /* Item Base Revision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Item Base Revision.plist"; sourceTree = "<group>"; };
-		59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemDetailTemplate.plist; sourceTree = "<group>"; };
 		59D3EC841DFCC204003A90DA /* TPM005.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TPM005.plist; sourceTree = "<group>"; };
 		59D3EC851DFCC204003A90DA /* TMPG005.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMPG005.plist; sourceTree = "<group>"; };
 		59D3EC861DFCC204003A90DA /* TMPG004.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMPG004.plist; sourceTree = "<group>"; };
@@ -804,8 +804,8 @@
 				59E2AD961D1724DC003197B5 /* ItemList.swift */,
 				59E583151D300F2800783801 /* star1.png */,
 				59E583161D300F2800783801 /* star2.png */,
-				59B48DE61D2DBD08000EBE2B /* ItemDetailTemplate.plist */,
 				59E2AD981D172606003197B5 /* ItemDetail.swift */,
+				593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */,
 				59E2AD9A1D172800003197B5 /* Progress.swift */,
 				59E2AD9C1D172831003197B5 /* Settings.swift */,
 				59E2AD9E1D1738A8003197B5 /* itemListCell.swift */,
@@ -1059,7 +1059,6 @@
 				59D3ED651DFCC205003A90DA /* ICX015.plist in Resources */,
 				59D3ED5B1DFCC205003A90DA /* TMG012.plist in Resources */,
 				59D3EDE61DFCC205003A90DA /* MMS312.plist in Resources */,
-				59B48DE71D2DBD08000EBE2B /* ItemDetailTemplate.plist in Resources */,
 				59D3ED921DFCC205003A90DA /* MMS009.plist in Resources */,
 				59D3ED961DFCC205003A90DA /* MMS017.plist in Resources */,
 				59D3ED861DFCC205003A90DA /* MMS251.plist in Resources */,
@@ -1169,6 +1168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59E2AD9F1D1738A8003197B5 /* itemListCell.swift in Sources */,
+				593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */,
 				5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */,
 				59E2AD971D1724DC003197B5 /* ItemList.swift in Sources */,
 				59E2AD991D172606003197B5 /* ItemDetail.swift in Sources */,

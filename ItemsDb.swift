@@ -125,7 +125,8 @@ open class ItemsDb {
         var uuidQueryResult = [String:String]()
         let updCurrentRow = selectedRow + 1
         let query = items.select(uuid)
-                         .limit(1, offset: updCurrentRow)
+                    .order(itemname.asc)
+                    .limit(1, offset: updCurrentRow)
         for row in try! db.prepare(query) {
             uuidQueryResult = ["UUID":row[uuid]]
         }

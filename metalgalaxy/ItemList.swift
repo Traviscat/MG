@@ -202,7 +202,8 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "loadDetail" {
             navigationItem.title = nil
-            let itemDetailController:ItemDetail = segue.destination as! ItemDetail
+            let itemNavigationController:UINavigationController = segue.destination as! UINavigationController
+            let itemDetailController:ItemDetail = itemNavigationController.viewControllers[0] as! ItemDetail
             let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
             let theUUID = theItemDb.getItemUUID((selectedIndex?.row)!)
             itemDetailController.selectedItemUUID = theUUID["UUID"]!
