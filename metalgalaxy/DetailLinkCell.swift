@@ -10,8 +10,7 @@ import UIKit
 
 class DetailLinkCell: UITableViewCell {
     
-    
-    @IBOutlet weak var titleLabel: UILabel!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()

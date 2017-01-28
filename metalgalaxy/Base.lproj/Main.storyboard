@@ -286,10 +286,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="subtitleLabel" destination="MX0-AY-fWw" id="d7I-1M-4Jw"/>
-                                    <outlet property="titleLabel" destination="15r-Av-CZ2" id="441-cv-6uU"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Link" textLabel="urP-tJ-Ucm" style="IBUITableViewCellStyleDefault" id="X6Z-bs-zLY" customClass="DetailLinkCell">
                                 <rect key="frame" x="0.0" y="201" width="375" height="44"/>
@@ -307,9 +303,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="titleLabel" destination="urP-tJ-Ucm" id="fR3-ks-129"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
