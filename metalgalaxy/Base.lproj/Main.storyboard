@@ -312,10 +312,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="rTg-lv-abV"/>
-                    <connections>
-                        <outlet property="linkcell" destination="X6Z-bs-zLY" id="8eR-aV-gz2"/>
-                        <outlet property="maincell" destination="Ikz-qj-pFv" id="iK4-EI-J2h"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epT-5B-xjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
