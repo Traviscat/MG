@@ -221,6 +221,8 @@
 		59D3EE111DFCC205003A90DA /* MMS302.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3ED491DFCC205003A90DA /* MMS302.plist */; };
 		59D3EE121DFCC205003A90DA /* MMS376.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3ED4A1DFCC205003A90DA /* MMS376.plist */; };
 		59D3EE131DFCC205003A90DA /* TMG001.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59D3ED4B1DFCC205003A90DA /* TMG001.plist */; };
+		59E0DCFB1E3CF9F8004ACE0D /* DetailMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E0DCFA1E3CF9F8004ACE0D /* DetailMainCell.swift */; };
+		59E0DCFD1E3CFB25004ACE0D /* DetailLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E0DCFC1E3CFB25004ACE0D /* DetailLinkCell.swift */; };
 		59E2AD7C1D1721BE003197B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */; };
 		59E2AD831D1721BE003197B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E2AD811D1721BE003197B5 /* Main.storyboard */; };
 		59E2AD851D1721BE003197B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E2AD841D1721BE003197B5 /* Assets.xcassets */; };
@@ -506,6 +508,8 @@
 		59D3ED491DFCC205003A90DA /* MMS302.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMS302.plist; sourceTree = "<group>"; };
 		59D3ED4A1DFCC205003A90DA /* MMS376.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMS376.plist; sourceTree = "<group>"; };
 		59D3ED4B1DFCC205003A90DA /* TMG001.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMG001.plist; sourceTree = "<group>"; };
+		59E0DCFA1E3CF9F8004ACE0D /* DetailMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailMainCell.swift; path = ../DetailMainCell.swift; sourceTree = "<group>"; };
+		59E0DCFC1E3CFB25004ACE0D /* DetailLinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLinkCell.swift; sourceTree = "<group>"; };
 		59E2AD781D1721BE003197B5 /* metalgalaxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metalgalaxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59E2AD821D1721BE003197B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -594,6 +598,7 @@
 		59E2AD7A1D1721BE003197B5 /* metalgalaxy */ = {
 			isa = PBXGroup;
 			children = (
+				59E0DCFA1E3CF9F8004ACE0D /* DetailMainCell.swift */,
 				59D3EC841DFCC204003A90DA /* TPM005.plist */,
 				59D3EC851DFCC204003A90DA /* TMPG005.plist */,
 				59D3EC861DFCC204003A90DA /* TMPG004.plist */,
@@ -798,6 +803,7 @@
 				59E2AD8F1D1721E6003197B5 /* metalgalaxy.entitlements */,
 				59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */,
 				59E2AD811D1721BE003197B5 /* Main.storyboard */,
+				59E0DCFC1E3CFB25004ACE0D /* DetailLinkCell.swift */,
 				59E2AD841D1721BE003197B5 /* Assets.xcassets */,
 				59E2AD861D1721BE003197B5 /* LaunchScreen.storyboard */,
 				59E2AD891D1721BE003197B5 /* Info.plist */,
@@ -1167,9 +1173,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E0DCFB1E3CF9F8004ACE0D /* DetailMainCell.swift in Sources */,
 				59E2AD9F1D1738A8003197B5 /* itemListCell.swift in Sources */,
 				593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */,
 				5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */,
+				59E0DCFD1E3CFB25004ACE0D /* DetailLinkCell.swift in Sources */,
 				59E2AD971D1724DC003197B5 /* ItemList.swift in Sources */,
 				59E2AD991D172606003197B5 /* ItemDetail.swift in Sources */,
 				59E2AD9B1D172800003197B5 /* Progress.swift in Sources */,

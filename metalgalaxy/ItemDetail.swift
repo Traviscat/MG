@@ -16,6 +16,7 @@ class ItemDetail: UITableViewController {
     var selectedInstructionsURL:URL? = nil
     var selected360URL:URL? = nil
     var itemDetailsTable:Dictionary <String, AnyObject?> = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ItemList().theItemDb.startDb()
@@ -56,17 +57,22 @@ class ItemDetail: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let oldCell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        let cell = (nil != oldCell) ? oldCell! : UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+//        let oldCell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+//        let cell = (nil != oldCell) ? oldCell! : UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
             if (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Main", for: indexPath) as! DetailMainCell
                 switch (indexPath as NSIndexPath).row {
         case 0:
+            cell.textLabel!.text = "Company:"
             cell.detailTextLabel!.text = itemDetailsTable["Item Company"] as? String
         case 1:
+            cell.textLabel!.text = "Brand:"
             cell.detailTextLabel!.text = itemDetailsTable["Item Brand"] as? String
         case 2:
+            cell.textLabel!.text = "Collection:"
             cell.detailTextLabel!.text = itemDetailsTable["Item Collection"] as? String
         case 3:
+            cell.textLabel!.text = "Release Date:"
             let userCalendar = Calendar.current
             var dateComponents = DateComponents()
             let theYear:String = (itemDetailsTable["Item Release Year"] as? String)!
@@ -81,6 +87,7 @@ class ItemDetail: UITableViewController {
             dateFormatter.timeStyle = DateFormatter.Style.none
             cell.detailTextLabel!.text = dateFormatter.string(from: fullDate!)
         case 4:
+            cell.textLabel!.text = "Item Avaliable Status:"
             let theItemAvaliableStatus: Bool = (itemDetailsTable["Item Avaliable"] as? Bool)!
             if !theItemAvaliableStatus
             {
@@ -89,6 +96,7 @@ class ItemDetail: UITableViewController {
                 cell.detailTextLabel!.text = "Avaliable Now"
             }
         case 5:
+            cell.textLabel!.text = "Item Exclusivity:"
             let theItemExclusivityStatus: Bool = (itemDetailsTable["Item Exclusivity"] as? Bool)!
             if !theItemExclusivityStatus {
                 cell.detailTextLabel!.text = itemDetailsTable["Item Exclusive Location"] as? String
@@ -96,13 +104,16 @@ class ItemDetail: UITableViewController {
                 cell.detailTextLabel!.text = "None"
             }
         case 6:
+            cell.textLabel!.text = "Assembly Diffculty:"
             cell.detailTextLabel!.text = itemDetailsTable["Assembly Diffculty"] as? String
         case 7:
+            cell.textLabel!.text = "Number of Sheets:"
             cell.detailTextLabel!.text = itemDetailsTable["Number of Sheets"] as? String
         default:
            break
             }
         } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Link", for: indexPath) as! DetailLinkCell
                 switch (indexPath as NSIndexPath).row {
                 case 0:
                     if (itemDetailsTable["Item Webpage URL"] == nil) {
@@ -110,6 +121,7 @@ class ItemDetail: UITableViewController {
                         cell.isUserInteractionEnabled = false
                         cell.accessoryType = UITableViewCellAccessoryType.none
                     } else {
+                        cell.textLabel!.text = "Item Web Page"
                         selectedInfoURL = URL(fileURLWithPath: itemDetailsTable["Item Webpage URL"] as! String)
                     }
                 case 1:
@@ -118,6 +130,7 @@ class ItemDetail: UITableViewController {
                         cell.isUserInteractionEnabled = false
                         cell.accessoryType = UITableViewCellAccessoryType.none
                     } else {
+                        cell.textLabel!.text = "Assembly Instructions"
                         selectedInstructionsURL = URL(fileURLWithPath: itemDetailsTable["Item Instructions URL"] as! String)
                     }
                 case 2:
@@ -126,6 +139,7 @@ class ItemDetail: UITableViewController {
                         cell.isUserInteractionEnabled = false
                         cell.accessoryType = UITableViewCellAccessoryType.none
                     } else {
+                        cell.textLabel!.text = "360 View"
                         selected360URL = URL(fileURLWithPath: itemDetailsTable["Item Instructions URL"] as! String)
                     }
                 default:
