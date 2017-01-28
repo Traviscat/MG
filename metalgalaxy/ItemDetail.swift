@@ -57,8 +57,6 @@ class ItemDetail: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let oldCell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-//        let cell = (nil != oldCell) ? oldCell! : UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
             if (indexPath as NSIndexPath).section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Main", for: indexPath) as! DetailMainCell
                 switch (indexPath as NSIndexPath).row {
@@ -111,7 +109,8 @@ class ItemDetail: UITableViewController {
             cell.detailTextLabel!.text = itemDetailsTable["Number of Sheets"] as? String
         default:
            break
-            }
+        }
+                return cell
         } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Link", for: indexPath) as! DetailLinkCell
                 switch (indexPath as NSIndexPath).row {
@@ -145,8 +144,8 @@ class ItemDetail: UITableViewController {
                 default:
                     break
                 }
+                return cell
             }
-        return cell
     }
     
 
