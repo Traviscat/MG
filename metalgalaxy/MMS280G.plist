@@ -15,9 +15,9 @@
 	<key>Item Release Date</key>
 	<date>2016-07-06T22:28:16Z</date>
 	<key>Item Avaliable</key>
-	<true/>
+	<false/>
 	<key>Item Not Avaliable Reason</key>
-	<string></string>
+	<string>Discontinued</string>
 	<key>Assembly Diffculty</key>
 	<string>Medium</string>
 	<key>Models Website</key>

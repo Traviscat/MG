@@ -855,7 +855,7 @@
 				TargetAttributes = {
 					59E2AD771D1721BE003197B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 66E2E6WN2F;
+						DevelopmentTeam = KDKC864Q4K;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
@@ -1306,6 +1306,7 @@
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KDKC864Q4K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",
@@ -1330,6 +1331,7 @@
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KDKC864Q4K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",

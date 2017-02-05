@@ -44,33 +44,33 @@ class ItemDetail: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 5
-        } else {
-            return 3
-        }
+            return 10
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if (indexPath as NSIndexPath).section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Main", for: indexPath) as! DetailMainCell
-                switch (indexPath as NSIndexPath).row {
+        var cell:UITableViewCell? = nil
+        if (indexPath as NSIndexPath).row >= 0 && (indexPath as NSIndexPath).row < 8 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "Main", for: indexPath) as! DetailMainCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "Link", for: indexPath) as! DetailLinkCell
+        }
+        switch (indexPath as NSIndexPath).row {
         case 0:
-            cell.textLabel!.text = "Company:"
-            cell.detailTextLabel!.text = itemDetailsTable["Item Company"] as? String
+            cell!.textLabel!.text = "Company:"
+            cell!.detailTextLabel!.text = itemDetailsTable["Item Company"] as? String
         case 1:
-            cell.textLabel!.text = "Brand:"
-            cell.detailTextLabel!.text = itemDetailsTable["Item Brand"] as? String
+            cell!.textLabel!.text = "Brand:"
+            cell!.detailTextLabel!.text = itemDetailsTable["Item Brand"] as? String
         case 2:
-            cell.textLabel!.text = "Collection:"
-            cell.detailTextLabel!.text = itemDetailsTable["Item Collection"] as? String
+            cell!.textLabel!.text = "Collection:"
+            cell!.detailTextLabel!.text = itemDetailsTable["Item Collection"] as? String
         case 3:
-            cell.textLabel!.text = "Release Date:"
+            cell!.textLabel!.text = "Release Date:"
             let userCalendar = Calendar.current
             var dateComponents = DateComponents()
             let theYear:String = (itemDetailsTable["Item Release Year"] as? String)!
@@ -83,70 +83,63 @@ class ItemDetail: UITableViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = DateFormatter.Style.medium
             dateFormatter.timeStyle = DateFormatter.Style.none
-            cell.detailTextLabel!.text = dateFormatter.string(from: fullDate!)
+            cell!.detailTextLabel!.text = dateFormatter.string(from: fullDate!)
         case 4:
-            cell.textLabel!.text = "Item Avaliable Status:"
+            cell!.textLabel!.text = "Item Avaliable Status:"
             let theItemAvaliableStatus: Bool = (itemDetailsTable["Item Avaliable"] as? Bool)!
             if !theItemAvaliableStatus
             {
-                cell.detailTextLabel!.text = itemDetailsTable["Item Avaliable Reason"] as? String
+                cell!.detailTextLabel!.text = itemDetailsTable["Item Avaliable Reason"] as? String
             } else {
-                cell.detailTextLabel!.text = "Avaliable Now"
+                cell!.detailTextLabel!.text = "Avaliable Now"
             }
         case 5:
-            cell.textLabel!.text = "Item Exclusivity:"
+            cell!.textLabel!.text = "Item Exclusivity:"
             let theItemExclusivityStatus: Bool = (itemDetailsTable["Item Exclusivity"] as? Bool)!
             if !theItemExclusivityStatus {
-                cell.detailTextLabel!.text = itemDetailsTable["Item Exclusive Location"] as? String
+                cell!.detailTextLabel!.text = itemDetailsTable["Item Exclusive Location"] as? String
             } else {
-                cell.detailTextLabel!.text = "None"
+                cell!.detailTextLabel!.text = "None"
             }
         case 6:
-            cell.textLabel!.text = "Assembly Diffculty:"
-            cell.detailTextLabel!.text = itemDetailsTable["Assembly Diffculty"] as? String
+            cell!.textLabel!.text = "Assembly Diffculty:"
+            cell!.detailTextLabel!.text = itemDetailsTable["Assembly Diffculty"] as? String
         case 7:
-            cell.textLabel!.text = "Number of Sheets:"
-            cell.detailTextLabel!.text = itemDetailsTable["Number of Sheets"] as? String
-        default:
-           break
-        }
-                return cell
-        } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Link", for: indexPath) as! DetailLinkCell
-                switch (indexPath as NSIndexPath).row {
-                case 0:
+            cell!.textLabel!.text = "Number of Sheets:"
+            cell!.detailTextLabel!.text = itemDetailsTable["Number of Sheets"] as? String
+
+                case 8:
                     if (itemDetailsTable["Item Webpage URL"] == nil) {
-                        cell.textLabel!.text = "Item Web Page (Not Avaliable)"
-                        cell.isUserInteractionEnabled = false
-                        cell.accessoryType = UITableViewCellAccessoryType.none
+                        cell!.textLabel!.text = "Item Web Page (Not Avaliable)"
+                        cell!.isUserInteractionEnabled = false
+                        cell!.accessoryType = UITableViewCellAccessoryType.none
                     } else {
-                        cell.textLabel!.text = "Item Web Page"
-                        selectedInfoURL = URL(fileURLWithPath: itemDetailsTable["Item Webpage URL"] as! String)
+                        cell!.textLabel!.text = "Item Web Page"
+                        selectedInfoURL = URL(string: itemDetailsTable["Item Webpage URL"] as! String)
                     }
-                case 1:
+                case 9:
                     if (itemDetailsTable["Item Instructions URL"] == nil) {
-                        cell.textLabel!.text = "Assembly Instructions (Not Avaliable)"
-                        cell.isUserInteractionEnabled = false
-                        cell.accessoryType = UITableViewCellAccessoryType.none
+                        cell!.textLabel!.text = "Assembly Instructions (Not Avaliable)"
+                        cell!.isUserInteractionEnabled = false
+                        cell!.accessoryType = UITableViewCellAccessoryType.none
                     } else {
-                        cell.textLabel!.text = "Assembly Instructions"
-                        selectedInstructionsURL = URL(fileURLWithPath: itemDetailsTable["Item Instructions URL"] as! String)
+                        cell!.textLabel!.text = "Assembly Instructions"
+                        selectedInstructionsURL = URL(string: itemDetailsTable["Item Instructions URL"] as! String)
                     }
-                case 2:
+                case 10:
                     if (itemDetailsTable["Item 360 URL"] == nil) {
-                        cell.textLabel!.text = "360 View (Not Avaliable)"
-                        cell.isUserInteractionEnabled = false
-                        cell.accessoryType = UITableViewCellAccessoryType.none
+                        cell!.textLabel!.text = "360 View (Not Avaliable)"
+                        cell!.isUserInteractionEnabled = false
+                        cell!.accessoryType = UITableViewCellAccessoryType.none
                     } else {
-                        cell.textLabel!.text = "360 View"
-                        selected360URL = URL(fileURLWithPath: itemDetailsTable["Item Instructions URL"] as! String)
+                        cell!.textLabel!.text = "360 View"
+                        selected360URL = URL(string: itemDetailsTable["Item Instructions URL"] as! String)
                     }
                 default:
                     break
                 }
-                return cell
-            }
-    }
+        return cell!
+        }
     
 
     /*
@@ -187,23 +180,19 @@ class ItemDetail: UITableViewController {
     
     // MARK: - Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 {
             switch (indexPath as NSIndexPath).row {
-            case 0:
+            case 8:
                 let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInfoURL!)
                 self.show(safariViewController, sender: nil)
-            case 1:
+            case 9:
                 let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInstructionsURL!)
                 self.show(safariViewController, sender: nil)
-            case 2:
+            case 10:
                 let safariViewController : SFSafariViewController = SFSafariViewController(url: selected360URL!)
                 self.show(safariViewController, sender: nil)
             default:
-                break
+                print("Cell tapped does not have an action tied to it")
             }
-        } else {
-            print("Cell tapped does not have an action tied to it")
-        }
     }
     
      
