@@ -96,17 +96,19 @@ class ItemDetail: UITableViewController {
         case 5:
             cell!.textLabel!.text = "Item Exclusivity:"
             let theItemExclusivityStatus: Bool = (itemDetailsTable["Item Exclusivity"] as? Bool)!
-            if !theItemExclusivityStatus {
+            if theItemExclusivityStatus {
                 cell!.detailTextLabel!.text = itemDetailsTable["Item Exclusive Location"] as? String
             } else {
                 cell!.detailTextLabel!.text = "None"
             }
         case 6:
             cell!.textLabel!.text = "Assembly Diffculty:"
-            cell!.detailTextLabel!.text = itemDetailsTable["Assembly Diffculty"] as? String
+            cell!.detailTextLabel!.text = itemDetailsTable["Item Diffculty"] as? String
         case 7:
             cell!.textLabel!.text = "Number of Sheets:"
-            cell!.detailTextLabel!.text = itemDetailsTable["Number of Sheets"] as? String
+            let sheetNumber = itemDetailsTable["Item Number of Sheets"] as? Int
+            let sheetNumberString = String(describing: sheetNumber!)
+            cell!.detailTextLabel!.text = sheetNumberString
 
                 case 8:
                     if (itemDetailsTable["Item Webpage URL"] == nil) {
