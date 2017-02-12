@@ -184,14 +184,18 @@ class ItemDetail: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             switch (indexPath as NSIndexPath).row {
             case 8:
-                let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInfoURL!)
-                self.show(safariViewController, sender: nil)
+                let safariViewController = SFSafariViewController(url: selectedInfoURL!)
+                safariViewController.modalPresentationStyle = .overFullScreen
+                self.present(safariViewController, animated: true, completion: nil)
             case 9:
                 let safariViewController : SFSafariViewController = SFSafariViewController(url: selectedInstructionsURL!)
-                self.show(safariViewController, sender: nil)
+                safariViewController.modalPresentationStyle = .overFullScreen
+                self.present(safariViewController, animated: true, completion: nil)
+
             case 10:
                 let safariViewController : SFSafariViewController = SFSafariViewController(url: selected360URL!)
-                self.show(safariViewController, sender: nil)
+                safariViewController.modalPresentationStyle = .overFullScreen
+                self.present(safariViewController, animated: true, completion: nil)
             default:
                 print("Cell tapped does not have an action tied to it")
             }
