@@ -20,6 +20,14 @@ class ItemDetail: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ItemList().theItemDb.startDb()
+        if selectedItemUUID == "" {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let theUUID = ItemList().theItemDb.getItemUUID(0)
+                selectedItemUUID = theUUID["UUID"]!
+            } else {
+                print("UUID is nil, app may crash if this is not fixed")
+            }
+        }
         itemDetailsTable = ItemList().theItemDb.getItemDetail(selectedItemUUID)
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
         //self.tableView.reloadData()
@@ -41,6 +49,18 @@ class ItemDetail: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func encodeRestorableState(with coder: NSCoder) {
+        //1
+        let restoreUUID = selectedItemUUID
+        coder.encode(restoreUUID, forKey: "uuid")
+        super.encodeRestorableState(with: coder)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        selectedItemUUID = coder.decodeObject(forKey: "uuid") as! String
+        super.decodeRestorableState(with: coder)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +68,7 @@ class ItemDetail: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 10
+            return 11
     }
 
     
@@ -135,7 +155,7 @@ class ItemDetail: UITableViewController {
                         cell!.accessoryType = UITableViewCellAccessoryType.none
                     } else {
                         cell!.textLabel!.text = "360 View"
-                        selected360URL = URL(string: itemDetailsTable["Item Instructions URL"] as! String)
+                        selected360URL = URL(string: itemDetailsTable["Item 360 URL"] as! String)
                     }
                 default:
                     break

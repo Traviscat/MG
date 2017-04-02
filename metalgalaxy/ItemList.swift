@@ -14,12 +14,15 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     fileprivate var collapseDetailViewController = true
     public var theItemDb = ItemsDb()
 //    var uuidList : Array<String> = []
+    var padListHasDisplayed = false
     
     override func viewDidLoad() {
         
         splitViewController?.delegate = self
-        
+        splitViewController?.preferredDisplayMode = .allVisible
+        theItemDb.startDb()
         super.viewDidLoad()
+        
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -28,6 +31,16 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let initialIndexPath = IndexPath(row: 0, section: 0)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition:UITableViewScrollPosition.none)
+            self.performSegue(withIdentifier: "loadDetail", sender: initialIndexPath)
+        }
+    }
+    
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,14 +78,13 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
                 }
             
             else {
-                theItemDb.startDb()
                 let possibleRows = theItemDb.itemsAvaliable()
                 if possibleRows == 0 {
                     print("ERROR: No Data")
                     rows = 0
                 }
                 else {
-                    rows = possibleRows
+                    rows = possibleRows - 1
                 }
             }
                 }
@@ -198,15 +210,27 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "loadDetail" {
-            navigationItem.title = nil
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                navigationItem.title = nil
+            }
             let itemNavigationController:UINavigationController = segue.destination as! UINavigationController
-            let itemDetailController:ItemDetail = itemNavigationController.viewControllers[0] as! ItemDetail
-            let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
-            let theUUID = theItemDb.getItemUUID((selectedIndex?.row)!)
-            itemDetailController.selectedItemUUID = theUUID["UUID"]!
+            let itemDetailController:ItemDetail = itemNavigationController.viewControllers[0] as! ItemDetail            
+            if UIDevice.current.userInterfaceIdiom == .pad && padListHasDisplayed == false {
+                let selectedIndex = sender as! NSIndexPath
+                let theUUID = theItemDb.getItemUUID((selectedIndex.row))
+                itemDetailController.selectedItemUUID = theUUID["UUID"]!
+                padListHasDisplayed = true
+            }
+            else {
+                let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
+                let theUUID = theItemDb.getItemUUID((selectedIndex?.row)!)
+                itemDetailController.selectedItemUUID = theUUID["UUID"]!
+            }
         }
         
         // Pass the selected object to the new view controller.

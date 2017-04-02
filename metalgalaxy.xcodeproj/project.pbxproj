@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5912EF2A1D43C81300F31FB4 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912EF291D43C81300F31FB4 /* SQLite.framework */; };
 		5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912EF461D43CD9400F31FB4 /* ItemsDb.swift */; };
 		593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */; };
 		5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A11D2078D7005E9797 /* AdSupport.framework */; };
@@ -237,6 +236,8 @@
 		59E583171D300F2800783801 /* star1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E583151D300F2800783801 /* star1.png */; };
 		59E583181D300F2800783801 /* star2.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E583161D300F2800783801 /* star2.png */; };
 		59E5831C1D300F9D00783801 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E5831B1D300F9D00783801 /* Media.xcassets */; };
+		59F339561E51113000C25F29 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5912EF351D43C93F00F31FB4 /* SQLite.framework */; };
+		59F339571E51119700C25F29 /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5912EF351D43C93F00F31FB4 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,9 +292,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		59F339531E5110B700C25F29 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				59F339571E51119700C25F29 /* SQLite.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = metalgalaxy/SQLite.xcodeproj; sourceTree = "<group>"; };
-		5912EF291D43C81300F31FB4 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/metalgalaxy-fjgutnazsvzzigdysrkeuoevxcri/Build/Products/Debug-iphonesimulator/SQLite.framework"; sourceTree = "<group>"; };
 		5912EF461D43CD9400F31FB4 /* ItemsDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsDb.swift; path = ../ItemsDb.swift; sourceTree = "<group>"; };
 		593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemDetailsGenericCell.swift; sourceTree = "<group>"; };
 		5976A9A11D2078D7005E9797 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -527,6 +540,7 @@
 		59E583151D300F2800783801 /* star1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star1.png; sourceTree = SOURCE_ROOT; };
 		59E583161D300F2800783801 /* star2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star2.png; sourceTree = SOURCE_ROOT; };
 		59E5831B1D300F9D00783801 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		59F339541E51111700C25F29 /* SQLite.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SQLite.framework.dSYM; path = ../SQLite.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,6 +548,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F339561E51113000C25F29 /* SQLite.framework in Frameworks */,
 				5976A9B71D2080F6005E9797 /* AmazonAd.framework in Frameworks */,
 				5976A9B01D207935005E9797 /* QuartzCore.framework in Frameworks */,
 				5976A9AE1D20792A005E9797 /* EventKitUI.framework in Frameworks */,
@@ -545,7 +560,6 @@
 				5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */,
 				59E2AD911D1721ED003197B5 /* CloudKit.framework in Frameworks */,
 				59E2AD931D1721FE003197B5 /* StoreKit.framework in Frameworks */,
-				5912EF2A1D43C81300F31FB4 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,8 +583,8 @@
 		59E2AD6F1D1721BE003197B5 = {
 			isa = PBXGroup;
 			children = (
+				59F339541E51111700C25F29 /* SQLite.framework.dSYM */,
 				5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */,
-				5912EF291D43C81300F31FB4 /* SQLite.framework */,
 				5976A9B61D2080F6005E9797 /* AmazonAd.framework */,
 				5976A9AF1D207935005E9797 /* QuartzCore.framework */,
 				5976A9AD1D20792A005E9797 /* EventKitUI.framework */,
@@ -833,6 +847,7 @@
 				59E2AD741D1721BE003197B5 /* Sources */,
 				59E2AD751D1721BE003197B5 /* Frameworks */,
 				59E2AD761D1721BE003197B5 /* Resources */,
+				59F339531E5110B700C25F29 /* CopyFiles */,
 			);
 			buildRules = (
 			);
