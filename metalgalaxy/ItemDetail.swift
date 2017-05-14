@@ -11,7 +11,7 @@ import SafariServices
 
 class ItemDetail: UITableViewController {
     var selectedItemUUID:String = ""
-    let selectedItemName:String = ""
+    var selectedItemName:String = ""
     var selectedInfoURL:URL? = nil
     var selectedInstructionsURL:URL? = nil
     var selected360URL:URL? = nil
@@ -19,17 +19,7 @@ class ItemDetail: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ItemList().theItemDb.startDb()
-        if selectedItemUUID == "" {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                let theUUID = ItemList().theItemDb.getItemUUID(0)
-                selectedItemUUID = theUUID["UUID"]!
-            } else {
-                print("UUID is nil, app may crash if this is not fixed")
-            }
-        }
-        itemDetailsTable = ItemList().theItemDb.getItemDetail(selectedItemUUID)
-        self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+       
         //self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,6 +32,21 @@ class ItemDetail: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = selectedItemName
         super.viewWillAppear(animated)
+        
+        ItemList().theItemDb.startDb()
+        if selectedItemUUID == "" {
+            if traitCollection.horizontalSizeClass == .regular {
+                let indexPath = IndexPath(row: 0, section: 0)
+                ItemList().tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                let theUUID = ItemList().theItemDb.getItemUUID(0)
+                selectedItemUUID = theUUID["UUID"]!
+            } else {
+                print("UUID is nil, app may crash if this is not fixed")
+            }
+        }
+        itemDetailsTable = ItemList().theItemDb.getItemDetail(selectedItemUUID)
+        selectedItemName = (itemDetailsTable["Item Name"] as? String)!
+        self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
     }
     
     override func didReceiveMemoryWarning() {

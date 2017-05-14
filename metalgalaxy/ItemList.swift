@@ -9,12 +9,59 @@
 import UIKit
 import CloudKit
 
-class ItemList: UITableViewController,UISplitViewControllerDelegate  {
+extension ItemList: UISplitViewControllerDelegate {
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        
+        if let viewControllerIdentifier = secondaryViewController.restorationIdentifier, viewControllerIdentifier == kViewControllerNoSelection {
+            
+            // Always collapse empty detail
+            return true
+        }
+        
+        // Leave detail on top
+        return false
+    }
+    
+    func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
+        
+        if isDisplayingDetail(primaryViewController: primaryViewController) {
+            // Keep the detail scene (.None indicates the framework
+            // will figure out what to do)
+            return .none
+        }
+        
+        return emptySelectionNavigationController()
+    }
+    
+    func isDisplayingDetail(primaryViewController viewController: UIViewController) -> Bool {
+        
+        guard let navController = viewController as? UINavigationController, let detailNavController = navController.topViewController as? UINavigationController else {
+            
+            return false
+        }
+        
+        guard detailNavController.topViewController is ItemDetail else {
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    func emptySelectionNavigationController() -> UIViewController {
+        
+        return storyboard!.instantiateViewController(withIdentifier: kViewControllerNoSelection)
+    }
+}
+
+class ItemList: UITableViewController  {
     
     fileprivate var collapseDetailViewController = true
     public var theItemDb = ItemsDb()
+    let kViewControllerNoSelection = "NoSelectionNC"
 //    var uuidList : Array<String> = []
-    var padListHasDisplayed = false
+    var listHasDisplayed = false
     
     override func viewDidLoad() {
         
@@ -31,6 +78,7 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -212,19 +260,25 @@ class ItemList: UITableViewController,UISplitViewControllerDelegate  {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if (previousTraitCollection?.horizontalSizeClass == .compact) && (traitCollection.horizontalSizeClass == .regular) && (listHasDisplayed == false) {
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "loadDetail" {
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                navigationItem.title = nil
-            }
+//            if UIDevice.current.userInterfaceIdiom == .phone {
+//                navigationItem.title = nil
+//            }
             let itemNavigationController:UINavigationController = segue.destination as! UINavigationController
             let itemDetailController:ItemDetail = itemNavigationController.viewControllers[0] as! ItemDetail            
-            if UIDevice.current.userInterfaceIdiom == .pad && padListHasDisplayed == false {
+            if (listHasDisplayed == false) && (traitCollection.horizontalSizeClass == .regular) {
                 let selectedIndex = sender as! NSIndexPath
                 let theUUID = theItemDb.getItemUUID((selectedIndex.row))
                 itemDetailController.selectedItemUUID = theUUID["UUID"]!
-                padListHasDisplayed = true
+                listHasDisplayed = true
             }
             else {
                 let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
