@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5912EF471D43CD9400F31FB4 /* ItemsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912EF461D43CD9400F31FB4 /* ItemsDb.swift */; };
 		593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */; };
+		595112271EEC41020034AB2E /* IPadDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595112261EEC41020034AB2E /* IPadDefaultViewController.swift */; };
+		595112311EEC428A0034AB2E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 595112331EEC428A0034AB2E /* Localizable.strings */; };
 		5976A9A21D2078D7005E9797 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A11D2078D7005E9797 /* AdSupport.framework */; };
 		5976A9A41D2078FE005E9797 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */; };
 		5976A9A61D207908005E9797 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976A9A51D207908005E9797 /* CoreLocation.framework */; };
@@ -309,6 +311,8 @@
 		5912EF101D43C57E00F31FB4 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = metalgalaxy/SQLite.xcodeproj; sourceTree = "<group>"; };
 		5912EF461D43CD9400F31FB4 /* ItemsDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsDb.swift; path = ../ItemsDb.swift; sourceTree = "<group>"; };
 		593A38901E1AEAD600AC446D /* itemDetailsGenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemDetailsGenericCell.swift; sourceTree = "<group>"; };
+		595112261EEC41020034AB2E /* IPadDefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPadDefaultViewController.swift; sourceTree = "<group>"; };
+		595112321EEC428A0034AB2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5976A9A11D2078D7005E9797 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		5976A9A31D2078FE005E9797 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5976A9A51D207908005E9797 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -817,6 +821,8 @@
 				59E2AD8F1D1721E6003197B5 /* metalgalaxy.entitlements */,
 				59E2AD7B1D1721BE003197B5 /* AppDelegate.swift */,
 				59E2AD811D1721BE003197B5 /* Main.storyboard */,
+				595112331EEC428A0034AB2E /* Localizable.strings */,
+				595112261EEC41020034AB2E /* IPadDefaultViewController.swift */,
 				59E0DCFC1E3CFB25004ACE0D /* DetailLinkCell.swift */,
 				59E2AD841D1721BE003197B5 /* Assets.xcassets */,
 				59E2AD861D1721BE003197B5 /* LaunchScreen.storyboard */,
@@ -870,8 +876,8 @@
 				TargetAttributes = {
 					59E2AD771D1721BE003197B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 66E2E6WN2F;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 1;
@@ -1005,6 +1011,7 @@
 				59D3ED7A1DFCC205003A90DA /* MMS004.plist in Resources */,
 				59D3EE081DFCC205003A90DA /* MMS094.plist in Resources */,
 				59D3EDCF1DFCC205003A90DA /* MMS258.plist in Resources */,
+				595112311EEC428A0034AB2E /* Localizable.strings in Resources */,
 				59D3EE121DFCC205003A90DA /* MMS376.plist in Resources */,
 				59D3EDC61DFCC205003A90DA /* MMS102.plist in Resources */,
 				59D3EDAC1DFCC205003A90DA /* MMS052.plist in Resources */,
@@ -1188,6 +1195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595112271EEC41020034AB2E /* IPadDefaultViewController.swift in Sources */,
 				59E0DCFB1E3CF9F8004ACE0D /* DetailMainCell.swift in Sources */,
 				59E2AD9F1D1738A8003197B5 /* itemListCell.swift in Sources */,
 				593A38911E1AEAD600AC446D /* itemDetailsGenericCell.swift in Sources */,
@@ -1204,6 +1212,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		595112331EEC428A0034AB2E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				595112321EEC428A0034AB2E /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		59E2AD811D1721BE003197B5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1321,7 +1337,7 @@
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66E2E6WN2F;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",
@@ -1332,6 +1348,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronerdman.metalgalaxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "metalgalaxy/metalgalaxy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1346,7 +1363,7 @@
 				CODE_SIGN_ENTITLEMENTS = metalgalaxy/metalgalaxy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66E2E6WN2F;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/metalgalaxy/AmazonMobileAds",
@@ -1357,6 +1374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronerdman.metalgalaxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "metalgalaxy/metalgalaxy-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

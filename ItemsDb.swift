@@ -132,6 +132,16 @@ open class ItemsDb {
         }
         return uuidQueryResult
     }
+    func getAllUUID() -> Array<String> {
+        var uuidQueryResult = [String]()
+        let query = items.select(uuid)
+                    .order(itemname.asc)
+        for row in try! db.prepare(query) {
+            uuidQueryResult.append(row[uuid])
+        }
+        return uuidQueryResult
+    }
+    
     func getItemDetail(_ selectedUuid:String) -> Dictionary<String, AnyObject?> {
         var queryResult = [String:AnyObject?]()
         let query = items.select(uuid, itemname, itemmaker, itembrand, itemcollection,itemreleasemonth, itemreleaseyear, itemreleaseday, itemavaliable, itemavaliablereason, itemexclusivity, itemexclusivelocation, itemnumberofsheets, itemdiffculty, itemwebpageURL, iteminfoURL, item360URL)

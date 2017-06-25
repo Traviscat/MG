@@ -9,6 +9,9 @@
 import UIKit
 import CloudKit
 
+var stateRestoreNeeded = false
+var stateRestoreUUID = ""
+
 extension ItemList: UISplitViewControllerDelegate {
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
@@ -61,7 +64,7 @@ class ItemList: UITableViewController  {
     public var theItemDb = ItemsDb()
     let kViewControllerNoSelection = "NoSelectionNC"
 //    var uuidList : Array<String> = []
-    var listHasDisplayed = false
+    var restoreUUID = ""
     
     override func viewDidLoad() {
         
@@ -82,17 +85,23 @@ class ItemList: UITableViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let initialIndexPath = IndexPath(row: 0, section: 0)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition:UITableViewScrollPosition.none)
-            self.performSegue(withIdentifier: "loadDetail", sender: initialIndexPath)
+        //let initialIndexPath = IndexPath(row: 0, section: 0)
+        //if UIDevice.current.userInterfaceIdiom == .pad {
+        //    self.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition:UITableViewScrollPosition.none)
+        //    self.performSegue(withIdentifier: "loadDetail", sender: initialIndexPath)
         }
-    }
     
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         collapseDetailViewController = false
+        let selectedIndex = indexPath
+        let theDefaultViewController = IPadDefaultViewController().loadDetailViewForTableRow(indexPath: selectedIndex)
+        
+        // defaultViewController is the root of the failure most likely. The Let Test101 code compiles just fine, however the let defaultViewController:iPadDefaultViewController will prevent the app from compiling.
+        
+       // let Test101 = IPadDefaultViewController().loadDetailViewForTableRow(indexPath: selectedIndex)
+   //     let defaultViewController:IPadDefaultViewController = IPadDefaultViewController().loadDetailViewForTableRow(indexPath: selectedIndex)
     }
     
     // MARK: - UISplitViewControllerDelegate
@@ -211,7 +220,7 @@ class ItemList: UITableViewController  {
             }
         }
         return cell
-    }
+    
     
 
     /*
@@ -248,7 +257,8 @@ class ItemList: UITableViewController  {
         return true
     }
     */
-
+        
+    }
 
     // MARK: - Navigation
 
@@ -261,24 +271,53 @@ class ItemList: UITableViewController  {
     
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if (previousTraitCollection?.horizontalSizeClass == .compact) && (traitCollection.horizontalSizeClass == .regular) && (listHasDisplayed == false) {
+        if (previousTraitCollection?.horizontalSizeClass == .compact) && (traitCollection.horizontalSizeClass == .regular) {
             
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "loadDetail" {
+/*    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var proceedWithSegue = false
+        if identifier == "loadDetail" {
+            if (userHasMadeSelection == false) && (traitCollection.horizontalSizeClass == .regular) && (stateRestoreNeeded == false) {
+                self.performSegue(withIdentifier: "noSelection", sender: self)
+                proceedWithSegue = false
+            } else if (userHasMadeSelection == false) && (stateRestoreNeeded == true) {
+                proceedWithSegue = true
+            } else {
+                proceedWithSegue = true
+            }
+        }
+    return proceedWithSegue
+    }
+*/
+    
+/*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+    if segue.identifier == "loadDetail" {
 //            if UIDevice.current.userInterfaceIdiom == .phone {
 //                navigationItem.title = nil
 //            }
             let itemNavigationController:UINavigationController = segue.destination as! UINavigationController
             let itemDetailController:ItemDetail = itemNavigationController.viewControllers[0] as! ItemDetail            
-            if (listHasDisplayed == false) && (traitCollection.horizontalSizeClass == .regular) {
-                let selectedIndex = sender as! NSIndexPath
-                let theUUID = theItemDb.getItemUUID((selectedIndex.row))
-                itemDetailController.selectedItemUUID = theUUID["UUID"]!
-                listHasDisplayed = true
+            var restoreSelectedIndex = IndexPath(row: 0, section: 0)
+            if (stateRestoreNeeded == true) {
+                let uuidArray = theItemDb.getAllUUID()
+                var uuidFound = false
+                var i = 0
+                while (!uuidFound) {
+                    let thisUUID = uuidArray[i]
+                    if thisUUID == stateRestoreUUID {
+                        restoreSelectedIndex = IndexPath(row: i, section: 0)
+                        uuidFound = true
+                    } else {
+                    i += 1
+                    }
+                }
+                restoreSelectedIndex = IndexPath(row: i, section: 0)
+                itemDetailController.selectedItemUUID = restoreUUID
+                self.tableView.selectRow(at: restoreSelectedIndex, animated: true, scrollPosition: UITableViewScrollPosition.top)
+                userHasMadeSelection = true
             }
             else {
                 let selectedIndex = self.tableView.indexPath(for: sender as! ItemListCell)
@@ -286,10 +325,11 @@ class ItemList: UITableViewController  {
                 itemDetailController.selectedItemUUID = theUUID["UUID"]!
             }
         }
-        
+    }
+*/
         // Pass the selected object to the new view controller.
         
-    }
+}
     
 
-}
+
