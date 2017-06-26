@@ -2,8 +2,8 @@
 //  itemDetailsGenericCell.swift
 //  metalgalaxy
 //
-//  Created by AugieD369 on 1/2/17.
-//  Copyright © 2017 Aaron Erdman. All rights reserved.
+//  Created by Aaron on 1/2/17.
+//  Copyright © 2017 Aaron. All rights reserved.
 //
 
 import UIKit

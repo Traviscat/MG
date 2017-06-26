@@ -2,8 +2,8 @@
 //  IPadDefaultViewController.swift
 //  metalgalaxy
 //
-//  Created by AugieD369 on 6/10/17.
-//  Copyright © 2017 Aaron Erdman. All rights reserved.
+//  Created by Aaron on 6/10/17.
+//  Copyright © 2017 Aaron. All rights reserved.
 //
 
 import UIKit
@@ -28,10 +28,16 @@ class IPadDefaultViewController: UIViewController {
     
     func loadDetailViewForTableRow(indexPath:IndexPath) {
         theIndexPath = indexPath
-        performSegue(withIdentifier: "loadDetail", sender: nil)
+        let itemDetailController:ItemDetail = self.storyboard?.instantiateViewController(withIdentifier: "MainRootViewController") as! ItemDetail
+        let theUUID = ItemList().theItemDb.getItemUUID((theIndexPath.row))
+        itemDetailController.selectedItemUUID = theUUID["UUID"]!
+        self.navigationController?.pushViewController(itemDetailController, animated: true)
+        
+        
+//        navigationController?.performSegue(withIdentifier: "loadDetail", sender: nil)
     }
 
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "loadDetail" {
@@ -44,7 +50,7 @@ class IPadDefaultViewController: UIViewController {
                 itemDetailController.selectedItemUUID = theUUID["UUID"]!
             }
         }
-    
+
     /*
     // MARK: - Navigation
 
