@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  metalgalaxy
 //
-//  Created by AugieD369 on 6/19/16.
-//  Copyright © 2016 Aaron Erdman. All rights reserved.
+//  Created by Aaron on 6/19/16.
+//  Copyright © 2016 Aaron. All rights reserved.
 //
 
 import UIKit
