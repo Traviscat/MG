@@ -2,8 +2,8 @@
 //  ItemsDb.swift
 //  metalgalaxy
 //
-//  Created by AugieD369 on 7/23/16.
-//  Copyright © 2016 Aaron Erdman. All rights reserved.
+//  Created by Aaron on 7/23/16.
+//  Copyright © 2016 Aaron. All rights reserved.
 //
 
 import Foundation
